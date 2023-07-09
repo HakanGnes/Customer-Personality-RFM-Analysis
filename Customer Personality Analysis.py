@@ -56,9 +56,6 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import pandas as pd
 import datetime as dt
-from lifetimes import BetaGeoFitter
-from lifetimes import GammaGammaFitter
-from sklearn.preprocessing import MinMaxScaler
 
 pd.set_option('display.max_columns', None)
 pd.set_option('display.max_rows', None)
