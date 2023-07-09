@@ -168,7 +168,7 @@ rfm[rfm["Segment"] == "loyal_customers"].index
 # We can do a analysis process according to income levels.
 
 df["Income"].describe().T
-intervals = [1730.00, 35538.75, 51381.50, 68289.75, 666666.00]
+intervals = [1730.00, 35538.75, 51381.50, 68289.75, 666666.00] # Intervals were created according to quarterly values.
 new_labels = ["low income", "middle income", "high-middle income", "high income"]
 rfm["Income_level"] = pd.cut(df["Income"], intervals, labels=new_labels)
 rfm.head()
@@ -183,14 +183,14 @@ plt.show()
 df.info()
 
 # We can do another analysis process according to Age.
-df["Dt_Customer"] = pd.to_datetime(df["Dt_Customer"])
+df["Dt_Customer"] = pd.to_datetime(df["Dt_Customer"],infer_datetime_format=True)
 df["Dt_Customer"].max()  # Timestamp('2014-12-06 00:00:00')
 df["Age"] = 2015 - df["Year_Birth"]
 
 df["Age"].describe().T
 
-intervals = [18, 25, 40, 67, 122]
-new_labels = ["19_25", "26_40", "41_67", "67_100"]
+intervals = [18, 25, 50, 75, 100] # The data gives us quarterly values of 18-38-45-56-122, but we set the upper age limit as 100.
+new_labels = ["18_25", "26_50", "51_75", "76_100"]
 rfm["Age"] = pd.cut(df["Age"], intervals, labels=new_labels)
 rfm.head()
 
